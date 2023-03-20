@@ -3,7 +3,7 @@
 # - command: git push
 
 # Build
-# - command: chmod -R 777 ${{ github.workspace }}/application/logs
+# - command: chmod -R 777 ${{ github.workspace }}/writeable/logs
 # - command: composer install
 
 # Test
@@ -25,6 +25,6 @@ jobs:
       - run: echo "This job is triggered by a push to the develop branch"
       - name: Check out repository code
         uses: actions/checkout@v3
-      - name: Set permissions for logs directory recursively
-        run: chmod -R 777 ${{ github.workspace }}/application/logs
+      - name: Set permissions for logs directory recursively to avoid permission errors
+        run: chmod -R 777 ${{ github.workspace }}/writeable/logs
       - run: echo "This job's status is ${{ job.status }}."
