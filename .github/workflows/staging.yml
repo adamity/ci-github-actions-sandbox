@@ -1,0 +1,30 @@
+# Flow: Staging
+# Source
+# - command: git push
+
+# Build
+# - command: chmod -R 777 ${{ github.workspace }}/application/logs
+# - command: composer install
+
+# Test
+# - command: ${{ github.workspace }}/vendor/bin/phpunit
+
+# Deploy
+# - End at the test part for now
+
+name: Staging
+run-name: Run CI/CD Cycle for Staging Environment
+on:
+  push:
+    branches:
+      - develop
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "This job is triggered by a push to the develop branch"
+      - name: Check out repository code
+        uses: actions/checkout@v3
+      - name: Set permissions for logs directory recursively
+        run: chmod -R 777 ${{ github.workspace }}/application/logs
+      - run: echo "This job's status is ${{ job.status }}."
