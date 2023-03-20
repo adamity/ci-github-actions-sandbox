@@ -27,7 +27,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v3
       - name: Setup .env file
-        run: echo "CI_ENVIRONMENT=development" >> .env && echo "app.baseURL=''" >> .env
+        run: echo "CI_ENVIRONMENT=development" >> .env && echo "app.baseURL='http://example.com'" >> .env
       - name: Show .env file
         run: cat .env
       - name: Set permissions for logs directory recursively to avoid permission errors
