@@ -7,7 +7,7 @@
 # - command: composer install
 
 # Test
-# - command: ${{ github.workspace }}/vendor/bin/phpunit
+# - command: ${{ github.workspace }}/vendor/bin/phpunit [Done]
 
 # Deploy
 # - End at the test part for now
@@ -19,7 +19,8 @@ on:
     branches:
       - develop
 jobs:
-  build:
+  build-and-test:
+    name: Build and Test
     runs-on: ubuntu-latest
     steps:
       - run: echo "This job is triggered by a push to the develop branch"
@@ -29,14 +30,6 @@ jobs:
         run: chmod -R 777 ${{ github.workspace }}/writable/logs
       - name: Install dependencies
         run: composer install
-      - run: echo "This job's status is ${{ job.status }}."
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo "This job is triggered right after the build job."
-      - name: Check out repository code
-        uses: actions/checkout@v3
       - name: Run PHPUnit tests
         run: ${{ github.workspace }}/vendor/bin/phpunit
       - run: echo "This job's status is ${{ job.status }}."
