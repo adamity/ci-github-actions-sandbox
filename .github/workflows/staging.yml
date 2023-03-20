@@ -23,7 +23,9 @@ jobs:
       - name: Run PHPUnit tests
         run: ${{ github.workspace }}/vendor/bin/phpunit
   deploy:
+    needs: build-and-test
     name: Deploy to Staging
+    runs-on: ubuntu-latest
     steps:
       - name: Install SSH key
         uses: shimataro/ssh-key-action@v2
