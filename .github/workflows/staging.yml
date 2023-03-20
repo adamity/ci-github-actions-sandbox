@@ -36,7 +36,7 @@ jobs:
       - name: Adding Known Hosts
         run: ssh-keyscan -p ${{ secrets.SSH_PORT}} -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
       - name: Access Staging Server, Pull from GitHub and Install Dependencies
-        run: ssh -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.SSH_PATH }} && git pull && composer install"
+        run: ssh -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "cd ${{ secrets.SSH_PATH }} && git pull && sudo composer install"
       # - name: Update Staging by pulling from GitHub
       #   run: "cd ${{ secrets.SSH_PATH }} && git pull"
       # - name: Install dependencies
