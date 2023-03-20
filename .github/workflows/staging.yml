@@ -1,9 +1,9 @@
 # Flow: Staging
 # Source
-# - command: git push
+# - command: git push [Done]
 
 # Build
-# - command: chmod -R 777 ${{ github.workspace }}/writable/logs
+# - command: chmod -R 777 ${{ github.workspace }}/writable/logs [Done]
 # - command: composer install
 
 # Test
@@ -27,4 +27,6 @@ jobs:
         uses: actions/checkout@v3
       - name: Set permissions for logs directory recursively to avoid permission errors
         run: chmod -R 777 ${{ github.workspace }}/writable/logs
+      - name: Install dependencies
+        run: composer install
       - run: echo "This job's status is ${{ job.status }}."
