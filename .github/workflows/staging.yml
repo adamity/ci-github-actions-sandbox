@@ -22,7 +22,7 @@ jobs:
         run: composer install
       - name: Run PHPUnit tests
         run: ${{ github.workspace }}/vendor/bin/phpunit
-      - run: echo "${{ env.TEST_PORT }}"
+      - run: echo $TEST_PORT
 
   deploy:
     needs: build-and-test
