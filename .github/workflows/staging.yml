@@ -26,10 +26,13 @@ jobs:
       - run: echo "This job is triggered by a push to the develop branch"
       - name: Check out repository code
         uses: actions/checkout@v3
+      - name: Setup .env file
+        run: echo "CI_ENVIRONMENT=development\napp.baseURL=''" > .env
+      - name: Show .env file
+        run: cat .env
       - name: Set permissions for logs directory recursively to avoid permission errors
         run: chmod -R 777 ${{ github.workspace }}/writable/logs
       - name: Install dependencies
         run: composer install
       - name: Run PHPUnit tests
         run: ${{ github.workspace }}/vendor/bin/phpunit
-      - run: echo "This job's status is ${{ job.status }}."
