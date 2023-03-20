@@ -31,8 +31,8 @@ jobs:
         run: composer install
       - run: echo "This job's status is ${{ job.status }}."
   test:
-    runs-on: ubuntu-latest
     needs: build
+    runs-on: ubuntu-latest
     steps:
       - run: echo "This job is triggered right after the build job."
       - name: Check out repository code
