@@ -39,7 +39,8 @@ jobs:
         run: |
           ssh -p ${{ secrets.SSH_PORT }} ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} "
           cd ${{ secrets.SSH_PATH }} && git pull &&
-          echo COMPOSER_ALLOW_SUPERUSER = 1 composer install"
+          echo COMPOSER_ALLOW_SUPERUSER=1 &&
+          composer install"
       # - name: Update Staging by pulling from GitHub
       #   run: "cd ${{ secrets.SSH_PATH }} && git pull"
       # - name: Install dependencies
