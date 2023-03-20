@@ -1,17 +1,3 @@
-# Flow: Staging
-# Source
-# - command: git push [Done]
-
-# Build
-# - command: chmod -R 777 ${{ github.workspace }}/writable/logs [Done]
-# - command: composer install
-
-# Test
-# - command: ${{ github.workspace }}/vendor/bin/phpunit [Done]
-
-# Deploy
-# - End at the test part for now
-
 name: Staging
 run-name: Run CI/CD Cycle for Staging Environment
 on:
